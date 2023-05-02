@@ -1,0 +1,160 @@
+N251SB/16 MAR/BRN-HEL Page 1
+
+[ OFP ]
+--------------------------------------------------------------------
+N251SB    16MAR2023    LSZB-EFHK   A20N N251SB  RELEASE 1241 16MAR23
+OFP 1                  BELP-VANTAA
+                         WX PROG 1612 1615 1618   OBS 1606 1606 1606
+	
+  ATC C/S   N251SB       LSZB/BRN   EFHK/HEL      CRZ SYS      CI 47
+16MAR2023   N251SB       1315/1335  1613/1621     GND DIST      1079
+A320-251N / LEAP-1A26               STA  1615     AIR DIST      1108
+                         CTOT:....                G/C DIST      1011
+                                                  AVG WIND   315/052
+MAXIMUM    TOW  79000  LAW  67400  ZFW  64300     AVG W/C       M011
+ESTIMATED  TOW  67220  LAW  61813  ZFW  59154     AVG ISA       M000
+                                                  AVG FF KGS/HR 2045
+                                                  FUEL BIAS    P00.0
+ALTN EFKU                                         TKOF ALTN  .......
+FL STEPS LSZB/0360/SUDEN/0230/GUPIN/0370/KOBUS/0310/BUKIG/0270
+         GOVEN/0370
+--------------------------------------------------------------------
+DISP RMKS   PLANNED OPTIMUM FLIGHT LEVEL
+
+--------------------------------------------------------------------
+         PLANNED FUEL
+---------------------------------
+FUEL           ARPT   FUEL   TIME
+---------------------------------
+TRIP            HEL   5407   0238
+CONT 15 MIN            511   0015
+ALTN            KUO   1314   0039
+FINRES                 834   0030
+---------------------------------
+MINIMUM T/OFF FUEL    8066   0403
+---------------------------------
+EXTRA                    0   0000
+---------------------------------
+T/OFF FUEL            8066   0403
+TAXI            BRN    230   0020
+---------------------------------
+BLOCK FUEL      BRN   8296
+PIC EXTRA            .....
+TOTAL FUEL           .....
+REASON FOR PIC EXTRA ............
+--------------------------------------------------------------------
+FMC INFO:
+FINRES+ALTN           2148
+TRIP+TAXI             5637
+--------------------------------------------------------------------
+NO TANKERING RECOMMENDED (P)
+--------------------------------------------------------------------
+I HEREWITH CONFIRM THAT I HAVE PERFORMED A THOROUGH SELF BRIEFING
+ABOUT THE DESTINATION AND ALTERNATE AIRPORTS OF THIS FLIGHT 
+INCLUDING THE APPLICABLE INSTRUMENT APPROACH PROCEDURES, AIRPORT 
+FACILITIES, NOTAMS AND ALL OTHER RELEVANT PARTICULAR INFORMATION.
+
+DISPATCHER: JANIE SLATER                PIC NAME: SCHWARZ, VOLKER
+
+TEL: +1 800 555 0199               PIC SIGNATURE: ...............
+
+
+ALTERNATE ROUTE TO:                                    FINRES    834
+APT      TRK DST              VIA                 FL  WC  TIME  FUEL
+--------------------------------------------------------------------
+EFKU/33  025 207  IDEPI3F IDEPI Y232 ADOPO DCT   330 P012 0039  1314
+                  ATLUL ATLUL2D                                     
+--------------------------------------------------------------------
+
+MEL/CDL ITEMS DESCRIPTION
+------------- -----------
+
+--------------------------------------------------------------------
+
+ROUTING:
+
+ROUTE ID: DEFRTE
+LSZB/14 RAMOK3S RAMOK Z143 BERSU N871 DITON T163 ZUE T125 ROMIR N851
+ESULI Y710 SUDEN Z79 GUPIN N869 ANELA Z715 RIKLU P31 GOVEN DCT ADAXA
+DCT EVADI Y370 DIVAM DIVAM4A EFHK/22L
+
+--------------------------------------------------------------------
+DEPARTURE ATC CLEARANCE:
+.
+.
+.
+--------------------------------------------------------------------
+ATIS:
+.
+.
+--------- --------- --------- --------- --------- --------- --------
+RVSM: ALT SYS  LEFT:             STBY:             RIGHT:
+
+--------- --------- --------- --------- --------- --------- --------
+--------------------------------------------------------------------
+                                TIMES
+                                -----
+				    
+               ESTIMATED        SKED              ACTUAL
+
+OUT            1315Z/1415L      1315Z/1415L       ......Z
+
+OFF            1335Z/1435L      1335Z/1435L       ......Z
+
+ON             1613Z/1813L      1607Z/1807L       ......Z
+
+IN             1621Z/1821L      1615Z/1815L       ......Z
+
+BLOCK TIME     0306             0300              ......
+
+--------------------------------------------------------------------
+                               WEIGHTS
+                               -------
+
+                EST      MAX     ACTUAL
+
+PAX             142              ......
+
+CARGO           3.5              ......
+
+PAYLOAD        14.8              ......
+
+ZFW            59.2     64.3     ......
+
+FUEL            8.3     13.9     ......  POSS EXTRA 5.6
+
+TOW            67.2     72.8  LDG......
+
+STAB TRIM                        ......
+
+LAW            61.8     67.4     ......
+
+--------------------------------------------------------------------
+
+[ ATC Flight Plan ]
+--------------------------------------------------------------------
+                          ICAO FLIGHT PLAN                           
+                          ----------------                           
+
+FF LSASZQZX EDUUZQZX EDGGZQZX LKAAZQZX EPWWZQZX UMKKZQZX EYVLZQZX
+EVRRZQZX ESAAZQZX EETTZQZX EFINZQZX
+161241 CYULSBFP
+(FPL-N251SB-IS
+-A20N/M-SDE2E3FGHIJ1RWXY/LB1
+-LSZB1315
+-N0450F360 RAMOK3S RAMOK Z143 BERSU N871 DITON T163 ZUE T125 ROMIR
+ N851 ESULI Y710 SUDEN/N0423F230 Z79 GUPIN/N0447F370 N869 ANELA Z715
+ RIKLU P31 KOBUS/N0459F310 P31 BUKIG/N0450F270 P31 GOVEN/N0454F370
+ DCT ADAXA DCT EVADI Y370 DIVAM DIVAM4A
+-EFHK0228 EFKU
+-PBN/A1B1C1D1O1S2 DOF/230316 REG/N251SB EET/EDUU0014 EDGG0015
+ LKAA0041 EPWW0103 UMKK0135 EYVL0139 EVRR0143 ESAA0148 EVRR0155
+ EETT0202 EFIN0209 PER/C RMK/TCAS)
+
+[ Additional Info ]
+--------------------------------------------------------------------
+D I S P A T C H  B R I E F I N G  I N F O    N251SB    LSZB/EFHK
+
+
+
+

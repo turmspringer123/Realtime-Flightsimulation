@@ -1,0 +1,41 @@
+{
+  "name": "flightradar24-to-csv",
+  "version": "0.1.0",
+  "description": "Tiny tool to parse flightradar24 data to CSV and GeoJSON",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/LuisSevillano/flightradar24-to-csv.git"
+  },
+  "keywords": [
+    "flightradar24",
+    "csv",
+    "d3",
+    "nodejs",
+    "GeoJSON"
+  ],
+  "author": "Luis Sevillano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuisSevillano/flightradar24-to-csv/issues"
+  },
+  "homepage": "https://github.com/LuisSevillano/flightradar24-to-csv",
+  "devDependencies": {
+    "d3-dsv": "^1.2.0",
+    "fs": "^0.0.2",
+    "mkdirp": "^0.5.6",
+    "node-fetch": "^2.6.1"
+  },
+  "dependencies": {
+    "axios": "^1.2.2",
+    "express": "^4.18.2",
+    "fetch-ponyfill": "^7.1.0",
+    "json-2-csv": "^3.18.0",
+    "leaflet": "^1.9.3",
+    "node-simconnect": "^3.2.2",
+    "os": "^0.1.2",
+    "parse": "^3.5.1",
+    "parse-jsonp": "^2.0.0",
+    "pinkie-promise": "^2.0.1"
+  }
+}

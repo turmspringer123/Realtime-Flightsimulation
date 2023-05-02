@@ -1,0 +1,47 @@
+		<div class="btn-group" role="group" aria-label="Map controls" style="position:relative;z-index:2;top:-3px;">
+			<button id="followModeButton" type="button" class="btn btn-primary btn-sm" onclick="toggleFollowPlane();$(this).blur();"><span id="followMode">Unfollow Plane</span></button>
+			<input type="file" id="kmlFile" onchange="loadKML()" placeholder="kmlFile" accept=".kml">
+			<button type="btn btn-success" data-bs-toggle="collapse" data-bs-target="#collapseExample3337" aria-expanded="false" aria-controls="collapseExample3337" style="font-weight:normal; color:#1a067e" >
+				PAX_INFO</button>
+			<div class="collapse" id="collapseExample3337">
+				<div class="card card-body">
+						
+					<!-- Display Mode -->
+					<iframe src="http://localhost:9015/" style="width: 800px; height: 500px;"></iframe>
+			
+				</div></div>
+
+				
+<button type="btn btn-success" data-bs-toggle="collapse" data-bs-target="#collapseExample33" aria-expanded="false" aria-controls="collapseExample33" style="font-weight:normal; color:#1a067e" >
+	Flight-Time</button>
+
+ 
+ <div class="collapse" id="collapseExample33">
+   <div class="card card-body" >
+	<form id="flight-form">
+
+		<input type="text" id="origin-city" name="origin-city" placeholder="Departure">
+	  
+		<input type="text" id="destination-city" name="destination-city" placeholder="Destination">
+		<label for="departure-time" style="color:#3053c6">Departure Time exp:</label>
+<input type="text" id="departure-time" placeholder="Departure estimated">
+<br>
+
+
+<br>
+				
+
+		<button type="submit">Calculate and update your Flight Time</button>
+	  </form>
+	 
+
+
+	  
+		<br>
+		
+		
+	</div></div></div></div>
+	
+	
+
+	

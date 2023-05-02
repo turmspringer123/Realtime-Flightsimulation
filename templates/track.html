@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Real_Traffic_Moving_Map</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+
+	<!-- Bootstrap CSS-->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+	<!-- Range Slider CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rangeslider.js/2.3.3/rangeslider.css" integrity="sha512-FkNnPJevAkIHB3NqUiMadWNcoMcOCPQUMyF55JeAFZmPcSR6wK6TgZ0qL6bMrRqGNaaVS8CAwBYceORhdTUILQ==" crossorigin="anonymous" />
+
+	<!-- Leaflet CSS and JS -->
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/leaflet-rotatedmarker@0.2.0/leaflet.rotatedMarker.min.js"></script>
+	<script src="/static/vendor/leaflet-providers/leaflet-providers.js"></script>
+	<script src='https://unpkg.com/leaflet.marker.slideto@0.2.0/Leaflet.Marker.SlideTo.js'></script>
+
+	<!-- Fontawesome JS-->
+	<script src="https://kit.fontawesome.com/99043d701d.js" crossorigin="anonymous"></script>
+
+	<!-- JQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Leaflet KML plugin -->
+<script src="/static/vendor/leaflet-providers/L.KML.js"></script>
+	<!-- JQuery UI -->
+	<script src="https://code.jquery.com/ui/1.11.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/flick/jquery-ui.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+	<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+	<!-- JQuery UI Slider -->
+	<link rel="stylesheet" href="/static/vendor/jquery-ui-slider/jquery-ui-slider-pips.css">
+	<script src="/static/vendor/jquery-ui-slider/jquery-ui-slider-pips.js"></script>
+	<link
+	rel="stylesheet"
+	type="text/css"
+	href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.0.1/leaflet.css"/>
+	<!-- Sweetalert2 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css">
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+
+	<!-- Microtip tooltips -->
+	<link rel="stylesheet" href="https://unpkg.com/microtip/microtip.css">
+	<script type="text/javascript" src="simbrief.apiv1.js"></script>
+	<!-- Bootstrap Validator -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+	<script src="https://unpkg.com/georaster"></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.js"></script>
+<link rel="stylesheet" href=https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.Default.css>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+		integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+		crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+		integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
+		crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.0.0/leaflet-realtime.min.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-leaflet-arrowheads@1.1.0/build/react-leaflet-arrowheads.min.js"></script>
+	<!-- Set script root-->
+	<script type=text/javascript>
+		$SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+<script src="./leaflet-omnivore.min.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+  <script src="https://cdn.jsdelivr.net/leaflet.polylineDecorator/1.6.0/leaflet.polylineDecorator.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/leaflet.polylineDecorator/1.6.0/leaflet.polylineDecorator.css" />
+  <script src="
+  https://cdn.jsdelivr.net/npm/msfs-simconnect-nodejs@0.0.1/index.min.js
+  "></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+	<!-- Set favicon and Apple touch device home screen icon-->
+	<link rel="shortcut icon" href="/static/img/favicon.ico">
+	<link rel="apple-touch-icon" href="/static/img/apple-touch-icon.png">
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+	<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-omnivore/0.3.4/leaflet-omnivore.js"></script>
+	<script type="module">
+		import { kml } from "https://unpkg.com/@tmcw/togeojson?module";</script>
+		<script src="https://npmcdn.com/leaflet-geometryutil"></script>
+
+	<style>
+		html, body {
+			height: 100%;
+			background-color: #1c1e20;
+			
+  
+		}
+		
+		
+		
+		button {
+			margin-top: 2px;
+			margin-bottom: 2px;
+		}
+		
+		.navbar-scroll .nav-link,
+.navbar-scroll .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #f8f8f8;
+}
+
+/* Color of the navbar BEFORE scroll */
+.navbar-scroll {
+  background-color: #59acf0;
+}
+
+/* Color of the links AFTER scroll */
+.navbar-scrolled .nav-link,
+.navbar-scrolled .navbar-toggler-icon,
+.navbar-scroll .navbar-brand {
+  color: #262626;
+}
+
+/* Color of the navbar AFTER scroll */
+.navbar-scrolled {
+  background-color: #fff;
+}
+
+/* An optional height of the navbar AFTER scroll */
+.navbar.navbar-scroll.navbar-scrolled {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+.navbar-brand {
+  font-size:medium;
+  height: 3.5rem;
+}
+		/* Chrome, Safari, Edge, Opera */
+		input::-webkit-outer-spin-button,
+		input::-webkit-inner-spin-button {
+		  -webkit-appearance: none;
+		  margin: 0;
+		}
+
+		/* Firefox */
+		input[type=number] {
+		  -moz-appearance: textfield;
+		}
+		
+		/* Safari/iOS press and hold button fix and double-tap zoom and pull down refresh fix in Chrome*/
+		body {
+		-webkit-touch-callout: none;
+		-webkit-user-select: none;
+		touch-action: manipulation;
+		overscroll-behavior: contain;
+		}
+		/* Custom Range Slider*/
+		input[type=range] {
+		  width: 100%;
+		  margin: 19.9px 0;
+		  background-color: transparent;
+		  -webkit-appearance: none;
+		}
+		input[type=range]:focus {
+		  outline: none;
+		}
+		input[type=range]::-webkit-slider-runnable-track {
+		  background: #efedec;
+		  border: 0;
+		  border-radius: 1.3px;
+		  width: 100%;
+		  height: 5.2px;
+		  cursor: pointer;
+		}
+		input[type=range]::-webkit-slider-thumb {
+		  margin-top: -19.9px;
+		  width: 30px;
+		  height: 45px;
+		  background: #6c757d;
+		  border: 0;
+		  border-radius: 11px;
+		  cursor: pointer;
+		  -webkit-appearance: none;
+		}
+		input[type=range]:focus::-webkit-slider-runnable-track {
+		  background: #ffffff;
+		}
+		input[type=range]::-moz-range-track {
+		  background: #efedec;
+		  border: 0;
+		  border-radius: 1.3px;
+		  width: 100%;
+		  height: 5.2px;
+		  cursor: pointer;
+		}
+		input[type=range]::-moz-range-thumb {
+		  width: 30px;
+		  height: 45px;
+		  background: #6c757d;
+		  border: 0;
+		  border-radius: 11px;
+		  cursor: pointer;
+		}
+		input[type=range]::-ms-track {
+		  background: transparent;
+		  border-color: transparent;
+		  border-width: 19.9px 0;
+		  color: transparent;
+		  width: 100%;
+		  height: 5.2px;
+		  cursor: pointer;
+		}
+		input[type=range]::-ms-fill-lower {
+		  background: #dfdbd9;
+		  border: 0;
+		  border-radius: 2.6px;
+		}
+		input[type=range]::-ms-fill-upper {
+		  background: #efedec;
+		  border: 0;
+		  border-radius: 2.6px;
+		}
+		input[type=range]::-ms-thumb {
+		  width: 30px;
+		  height: 45px;
+		  background: #6c757d;
+		  border: 0;
+		  border-radius: 11px;
+		  cursor: pointer;
+		  margin-top: 0px;
+		  /*Needed to keep the Edge thumb centred*/
+		}
+		input[type=range]:focus::-ms-fill-lower {
+		  background: #efedec;
+		}
+		input[type=range]:focus::-ms-fill-upper {
+		  background: #ffffff;
+		}
+		/*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+		how to remove the virtical space around the range input in IE*/
+		@supports (-ms-ime-align:auto) {
+		  /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+		  input[type=range] {
+			margin: 0;
+			/*Edge starts the margin from the thumb, not the track as other browsers do*/
+		  	
+
+		  }}
+		 
+		
+			.modal {
+				display:none;
+				position: fixed;
+				z-index: 1;
+				left: 0;
+				top: 0;
+				width: 100%;
+				height: 100%;
+				overflow: auto;
+				background-color: rgba(0, 0, 0, 0.4);
+			  }
+			  
+			  .modal-content {
+				background-color: #fefefe;
+				margin: 15% auto;
+				padding: 20px;
+				border: 1px solid #888;
+				width: 80%;
+			  }
+			  
+			  .close {
+				color: #aaa;
+				float: right;
+				font-size: 28px;
+				font-weight: bold;
+			  }
+			  
+			  .close:hover,
+			  .close:focus {
+				color: black;
+				text-decoration: none;
+				cursor: pointer;
+			  }
+			  
+			  textarea {
+				width: 100%;
+				height: 80%;
+				resize: none;
+			  }
+		/* Important part */
+		#collapseExample{
+			max-height: 100vh;
+			width: 100vh;
+			overflow-y: scroll;
+		 }
+
+		 object {
+			width: 100%;
+			height: 100%;
+		}       
+
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #dfe2ec;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #23b263;
+  color: white;
+}
+
+/* Right-aligned section inside the top navigation */
+.topnav-right {
+  float: right
+
+
+}
+.bg-img {
+	/* The image used */
+	background-image: url("./volki.jpg");
+  
+	min-height: 380px;
+  
+	/* Center and scale the image nicely */
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+  
+	/* Needed to position the navbar */
+	position: relative;
+  }
+  
+  /* Position the navbar container inside the image */
+  .container {
+	position: absolute;
+	margin: 20px;
+	width: auto;
+
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+  .Design-website-navbar-bg {
+	  background-color: #0c0521;
+  }
+  
+  .Design-website-navbar-logo {
+	  height: 50px;
+  }
+  
+  .Design-website-home-page-bg-container {
+	  background-image: url('https://assets.ccbp.in/frontend/responsive-website/landing-section-bg.png');
+	  height: 90vh;
+	  background-size: cover;
+  }
+  
+  .Design-website-home-page-heading {
+	  font-family: "Roboto";
+	  font-size: 40px;
+	  font-weight: bold;
+	  color: #fff;
+  }
+  
+  .Design-website-home-page-para {
+	  font-family: "Roboto";
+	  font-size: 18px;
+	  color: #fff;
+  }
+  
+  .Design-website-home-page-flexible {
+	  color: #ffdda9;
+  }
+  
+  .Design-website-sign-up-btn {
+	  border-width: 0;
+	  border-radius: 20px;
+	  background-color: #ffdda9;
+	  height: 50px;
+	  width: 160px;
+	  font-weight: bold;
+  }
+  
+  .Design-website-logos-section-bg-container {
+	  background-color: #f9fbfe;
+  
+  }
+  
+  .Design-website-logos-section-heading {
+	  font-size: 21px;
+	  font-family: "Roboto";
+  }
+  
+  .Design-website-deliver-img {
+	  height: 240px;
+  }
+  
+  .Design-website-deliver-card-heading {
+	  color: #323f4b;
+	  font-family: "Roboto";
+	  font-size: 26px;
+	  /* font-weight: bold; */
+  }
+  
+  .Design-website-deliver-card-para {
+	  color: #7b8794;
+	  font-family: "Roboto";
+	  font-size: 16px;
+  }
+  
+  .Design-website-tools-card-heading {
+	  color: #323f4b;
+	  font-family: "Roboto";
+	  font-size: 24px;
+	  font-weight: bold;
+  }
+  
+  .Design-website-tools-card-para {
+	  color: #7b8794;
+	  font-family: "Roboto";
+	  font-size: 16px;
+  }
+  
+  .Design-website-features-heading {
+	  color: #323f4b;
+	  font-family: "Roboto";
+	  font-size: 28px;
+	  font-weight: bold;
+  }
+  
+  .Design-website-features-para {
+	  color: #9aa5b1;
+	  font-family: "Roboto";
+	  font-size: 16px;
+  }
+  
+  .Design-website-features-card-img {
+	  height: 90px;
+  }
+  
+  .Design-website-features-card-heading {
+	  font-family: "Roboto";
+	  font-size: 22px;
+	  color: #323f4b;
+	  font-weight: 500;
+  }
+  
+  .Design-website-features-card-para {
+	  font-family: "Roboto";
+	  font-size: 15px;
+	  color: #7b8794;
+  }
+
+
+  #mySidenav a {
+	position:absolute;
+	left: -80px;
+	transition: 0.3s;
+	padding:5px;
+	width: 110px;
+	text-decoration: none;
+	font-size: 15px;
+	color: white;
+	border-radius: 0 5px 5px 0;
+  }
+  
+  #mySidenav a:hover {
+	left: 0;
+  }
+  
+  #about {
+	top: 20px;
+	background-color: #04AA6D;
+  }
+  
+  #blog {
+	top: 60px;
+	background-color: #2196F3;
+  }
+  
+  #projects {
+	top: 100px;
+	background-color: #f44336;
+  }
+  
+  #contact {
+	top:140px;
+	background-color: #147b87
+  }
+  #contact2 {
+	top:140px;
+	background-color: #851487
+  }
+  #contact3 {
+	top:140px;
+	background-color: #1704c3
+  }
+	</style>
+
+</head>
+
+
+<body>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-realtime/2.2.0/leaflet-realtime.min.js
+
+
+	" type="text/javascript"></script>
+	<script
+			type="text/javascript"
+			src="/node_modules/leaflet-geometryutil/src/leaflet.geometryutil.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.6.347/pdf.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/pdfjs-dist@3.4.120/build/pdf.min.js"></script>
+
+<script src="../static/js/leaflet-arrowheads.js"></script>      
+	  <script src="../static/js/leaflet-windbarb.js"></script>
+	  <script src="lib/geolib.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/0.0.124/turf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Turf.js/0.0.124/turf.js"></script>
+
+
+
+
+
+
+<div id="mySidenav" class="sidenav">
+	<a href onclick="$(this).blur();mapRefreshFix();setTimeout(function(){map.invalidateSize(true);},500)";
+	style="margin-left:-8px;margin-right:5px" data-toggle="collapse" data-target="#collapseMap"
+	aria-expanded="true" aria-controls="collapseMap" id="about">World-Map</a>
+	<a href onclick="$(this).blur();" style="margin-right:5px" type="button"
+	data-toggle="collapse" data-target="#collapsePlanning" aria-expanded="false"
+	aria-controls="collapsePlanning" id="blog">Fenix-Tablet</a>
+	
+	<a href onclick="$(this).blur();" style="margin-right:5px" type="button"
+	data-toggle="collapse" data-target="#collapsePlanning11" aria-expanded="false"
+	aria-controls="collapsePlanning11" id="projects">Fenix-MCDU</a>
+	<br>
+	<a href onclick="$(this).blur();" style="margin-right:5px" type="button"
+	data-toggle="collapse" data-target="#collapsePlanning121" aria-expanded="false"
+	aria-controls="collapsePlanning121" id="contact2">FBW-MCDU</a>
+<br>
+	
+</div>
+
+
+
+
+ <h2 style="text-align:center; color:#ffffff">FLIGHT INFO SYSTEM</h2> 
+  <table class="table">
+	<thead class="thead-dark">
+		<tr>
+			
+					
+			<th scope="col" style="font-weight:normal"></th>
+			<th scope="col" style="font-weight:normal">UTC </th>
+			<th scope="col" style="font-weight:normal"> Altitude [feet]</th>
+			<th scope="col" style="font-weight:normal">Temp [°C]</th>
+			<th scope="col" style="font-weight:normal">Press [hPa]</th>
+			<th scope="col" style="font-weight:normal">Visibility [m]</th>
+			<th scope="col" style="font-weight:normal">Wind [knots]</th>
+			<th scope="col" style="font-weight:normal">Ice [%]</th>
+			<th scope="col" style="font-weight:normal">Weight [pounds]</th>
+			<th scope="col" style="font-weight:normal">Speed[knots] </th>
+			<th scope="col" style="font-weight:normal">Latitude </th>
+			<th scope="col" style="font-weight:normal">Longitude </th>
+			<th scope="col" style="font-weight:normal">Distance[km] </th>
+			<th scope="col" style="font-weight:normal">Flight-Time[min] </th>
+			
+		</tr>
+	
+	<tbody >
+		<tr>
+			<th scope="row" id="myForm"></th>
+			<td id="cur_time" style="font-weight:normal; color:#dfdbd9"></td>
+			<td id="cur_alt" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_temp" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_press" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_traf" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_velo" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_ice" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_weight" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_speed" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_lat" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="cur_lon" style="font-weight:normal  ;color:#dfdbd9"></td>
+			<td id="distance" style="font-weight:normal ; color:#dfdbd9"></td>
+			<td id="flight-time" style="font-weight:normal ; color:#dfdbd9"></td>
+			</tr></thead>
+	</tbody>
+
+</table>
+<br><br>
+<div id="departure-time-display"></div>
+
+	  
+	<br>
+	
+	
+
+
+	</div>
+		  	
+  <script>
+	function myFunction() {
+	  window.open("https://www.simbrief.com/system/dispatch.php?&userid=495025&orig=&dest=", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=700,height=500");
+	}
+	</script>
+
+
+
+						  
+
+<script>
+
+	$(document).ready(function() {
+		var filename;
+		$('#btnupload').change(function() {
+		  if (this.files[0].name != "") {
+			filename = this.files[0]
+		  }
+		});
+		$('#btnPrvw').click(function() {
+		  $('#embdLink')[0].src = window.URL.createObjectURL(new Blob([filename], {"type":"application/pdf", zoom:4}));
+		});
+	  });
+	  
+
+	
+
+</script>
+
+	<script>
+	var geojsonMarkerOptions2 = L.icon( {
+	radius: 8,
+	fillColor: "#ff2000",
+	color: "#000",
+	weight: 1,
+	opacity: 1,
+	fillOpacity: 0.8
+});
+
+
+			
+			  </script>
+
+
+	<div class="container-fluid bg-secondary" id="myGroup" style="margin-bottom:0px">
+
+		<!-- Map -->
+		<div class="collapse show" id="collapseMap" data-parent="#myGroup" style="margin-bottom:-80px">
+			<div class="row" id="map_row" style="height:calc(100vh - 90px);height:calc((var(--vh, 1vh) * 100) - 90px);margin-top:10px;margin-bottom:-30px;">
+				<div class="col"  id="map_column" style="position:relative; height:100%;z-index:1;">
+					<div id = "map" style = "height: 100%; width: 100%;"></div>
+					<svg height="140" width="140">
+						<defs>
+							<filter id="blur" x="0" y="0" width="100%" height="100%">
+								<feGaussianBlur result="blurOut" in="SourceGraphic" stdDeviation="5" />
+							</filter>
+						</defs>
+					</svg>
+				</div>
+			
+			</div>
+			{% include 'map.html' %}
+			
+		</div>
+
+		<!-- Load plane specific tabs -->
+		{% for tab in curr_plane %}
+		{% set post_loop = loop %}
+		{% include "menu_"+tab[1]+".html" %}
+		{% endfor %}
+
+		<!-- Data -->
+		{% include 'fenix.html' %}
+		{% include 'radar_options.html' %}
+		{% include 'fenix_remote.html' %}
+		{% include 'fbw_remote.html' %}
+		
+		
+		
+
+	</div>
+	
+	<script>
+		
+		let followPlane = 1;
+		let trackGPS = true;
+		
+
+
+		// Create map options
+		var mapOptions = {
+			center: [47.134, 10.108],
+			zoom: 8,
+			dragging: true,
+		
+			
+		}
+		
+		// Creating a map object
+		var map = new L.map('map', mapOptions);
+
+		
+		// Creating a Layer object
+		var simple = new L.tileLayer.provider('CartoDB.Voyager');
+		var openstreet = new L.tileLayer.provider('OpenStreetMap.Mapnik');
+		var grayscale = new L.tileLayer.provider('Stadia.AlidadeSmoothDark');
+		var basic = new L.tileLayer.provider('Stadia.Outdoors');
+		var topo = new L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+			maxZoom: 17,
+			attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+		});
+		
+	
+		var openaip_cached_basemap = new L.TileLayer("http://{s}.tile.maps.openaip.net/geowebcache/service/tms/1.0.0/openaip_basemap@EPSG%3A900913@png/{z}/{x}/{y}.png", {
+			maxZoom: 20,
+			minZoom: 4,
+			tms: true,
+			detectRetina: true,
+			subdomains: '12',
+			format: 'image/png',
+			transparent: true
+
+		});
+
+		var google = new L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+
+			subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+		}).addTo(map)
+		
+		var Options = {
+			radius: 8,
+			fillColor: "blue",
+			color: "#000",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 0.8
+		};
+
+					
+			
+		var rains = new L.tileLayer('https://tilecache.rainviewer.com/v2/radar/' + parseInt(Date.now() / 600000) * 600 + '/256/{z}/{x}/{y}/2/1_1.png', {
+			tileSize: 256,
+			opacity: 0.4,
+			transparent: true,
+			attribution: '<a href="https://rainviewer.com" target="_blank">rainviewer.com</a>'
+		}).addTo(map)
+
+
+		var wind = new L.tileLayer("https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=4ac72744f72e68f02e6cc0493774cb72",{
+		tileSize: 256,
+		opacity: 0.4,
+		transparent: true,
+		attribution: '<a href="https://openweathermap.org" target="_blank"></a>'
+		}).addTo(map)
+		
+
+		map.addLayer(basic);
+
+		var baseLayers = {
+			"Dark": grayscale,
+			"Open Street": openstreet,
+			"Pale": simple,
+			"Topo": topo,
+			"Default": basic,
+			"Google": google,
+			
+			
+		}
+		var overlays = {
+			"Rain": rains,
+			"Wind": wind,
+			
+	
+				}
+						
+		
+		
+
+		L.control.layers(baseLayers, overlays,).addTo(map)
+
+		var iconOptions = {
+			iconUrl: '/static/img/img.png',
+			iconSize: [35, 35]
+		}
+
+		
+		var customIcon = L.icon(iconOptions);
+
+		
+		var markerOptions = {
+			clickable: false,
+			draggable: false,
+			icon: customIcon,
+			rotationAngle: 0,
+			rotationOrigin: "center"
+
+		}
+
+
+		var marker = L.marker([47.438139, 10.395830], markerOptions);
+		marker.addTo(map);
+
+
+
+		var trackline;
+		trackline = L.polyline([], { color: 'red', smoothFactor: 3 }).addTo(map);
+
+		var myCustomGroup = L.geoJSON(null, {
+			pointToLayer: function (feature, latlng) {
+			  return L.circleMarker(latlng,Options).bindPopup(feature.properties.description,);
+
+			
+			}})
+			
+
+			var currentKMLTrack = undefined;
+			function loadKML() {
+				var file = document.getElementById("kmlFile").files[0];
+				var reader = new FileReader();
+			  
+				reader.onload = function (e) {
+				  var kmlData = e.target.result;
+				  displayKML(kmlData);
+				};
+			  
+				reader.readAsText(file);
+			  }
+
+			  function displayKML(kmlData) {
+				var layer = omnivore.kml.parse(kmlData, null, myCustomGroup);
+				
+			
+				layer.on("ready", function () {
+				  map.fitBounds(layer.getBounds(),{zoom:10});
+				 
+
+				});
+				
+				layer.addTo(map);
+				
+				function toggleOverlay() {
+					if (map.hasLayer(layer)) {
+					  map.removeLayer(layer);
+					} else {
+					  map.addLayer(layer);
+					}
+				  }
+				  
+				
+				  map.on('click', toggleOverlay);	
+				
+					
+				}	
+
+
+
+			         // Load the KML file onto the map using omnivore
+
+		var geojsonMarkerOptions = L.icon( {
+			radius: 8,
+			fillColor: "#ff7800",
+			color: "#000",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 0.8
+		});
+		
+		
+		var Options = {
+			radius: 8,
+			fillColor: "#ff7800",
+			color: "#000",
+			weight: 1,
+			opacity: 1,
+			fillOpacity: 0.8
+		};
+
+		
+			
+
+		
+		fetch('./airport', {
+
+		})
+			.then((res) => {
+				return res.json();
+			})
+			.then(function (data) {
+									
+					var point = L.markerClusterGroup();
+					var geoJsonLayer = L.geoJson(data, {
+						onEachFeature: function (feature, layer) {
+							layer.bindPopup(feature.properties.name +"<br>"+ feature.properties.icao,);
+
+						}
+					});
+					point.addLayer(geoJsonLayer);
+					 map.addLayer(point);
+					
+
+
+				})		
+			
+							 
+				
+				
+
+		// do something with jsonResponse
+
+		var myIcon2 = L.icon({
+			iconUrl: '/static/img/plane.png',
+			iconSize: [20, 20],
+			iconAnchor: [22, 22],
+			popupAnchor: [0, 0],
+			className: "icon",
+
+		})
+
+
+
+		function fetchData() {
+
+
+			
+
+			return fetch('./weather', {
+
+			})
+				.then((res) => {
+					return res.json();
+				})
+
+				.catch((err) => {
+					if (err) throw err
+				})
+		}
+
+		function plotStates(map, markers) {
+			fetchData().then(function (data) {
+				data.forEach((data) => {
+					const lat = data.latitude,
+						lng = data.longitude,
+						head = data.bearing,
+						origin = data.origin,
+						dest = data.destination,
+						id = data.id,
+						alt = data.altitude,
+						time= data.timestamp,
+						flight=data.flight,
+						speed=data.speed,
+						climb=data.rateOfClimb,
+						model=data.model
+													
+					 
+										
+						
+											
+					if (markers[id]=== undefined ) {
+						markers[id] = L.marker([lat, lng], { icon: myIcon }).bindPopup(GetPopupText(data),)
+					
+					
+						if(climb<= -1000){
+							markers[id] = L.marker([lat, lng], { icon: myIcon3 }).bindPopup(GetPopupText(data),)
+													
+							}
+																
+								
+								if(climb >= 500){
+									markers[id] = L.marker([lat, lng], { icon: myIcon4 }).bindPopup(GetPopupText(data),)
+															
+									}
+
+																		
+
+					} else {
+						var newLatLng = new L.LatLng(lat, lng);
+						markers[id].setLatLng(newLatLng)
+						markers[id]._popup.setContent(GetPopupText(data))
+
+						
+        // Set the start and end points of the polyline to the coordinates of the departure and arrival airports
+				
+					
+					}
+					markers[id].setRotationAngle(head);
+									  				  
+					markers[id].bindTooltip("Flight :"+ data.flight+"<br>","Arrival at:"+ data.destination + "<br>", {direction: 'right', offset: [-15, 25], permanent: true});
+				  
+					markers[id].addTo(map)
+					
+					
+				}
+
+			
+
+				);
+				setTimeout(() => plotStates(map, markers), 3000);
+
+			})
+		}
+	    
+	
+
+
+		const markers = {};
+		plotStates(map, markers);
+
+		
+
+
+		var myIcon = new L.icon({
+			iconUrl: '/static/img/plane-red.png',
+			iconSize: [20, 20],
+			iconAnchor: [22, 22],
+			popupAnchor: [0, 0],
+
+
+
+		})
+
+
+		var myIcon5 = new L.icon({
+			iconUrl: '/static/img/raute.png',
+			iconSize: [20, 20],
+			iconAnchor: [22, 22],
+			popupAnchor: [0, 0],
+
+
+
+		})
+
+
+
+		
+
+		function GetPopupText(data ) {
+			let airportFilter = data.destination + "/" + 'arrivals'
+			var text= `<a href="https://www.flightradar24.com/data/airports/${airportFilter}" target="_blank" rel="noopener noreferrer">Arrival-Info:</a>`
+			text+= "Flight :"+ data.flight+"<br>"
+			text += 'Departure : ' + data.origin + " <br>";
+			text += "Arrival:"+ data.destination + "<br>"
+			text += 'Alt : ' + data.altitude + " feet<br>";
+			text += 'speed : ' + data.speed + " <br>";
+			return text;
+			
+		}
+		
+
+
+
+				
+		var geojsonMarkerOption = {
+			radius: 5,
+			fillColor: " #178759",
+			color: "#000",
+			weight: 2,
+			opacity: 1,
+			fillOpacity: 0.8,
+			className: 'blinking'
+		};
+
+		var myIcon3 = new L.icon({
+			iconUrl: '/static/img/img.png',
+			iconSize: [20, 20],
+			iconAnchor: [22, 22],
+			popupAnchor: [0, 0],
+		
+		
+		
+		})
+		
+
+
+		function flightradar(){
+
+	
+			return fetch("./opensky", {
+			  
+			  })
+			
+			
+					.then((res) => {
+						return res.json();
+					})
+					.then((res) => {
+						return res.states.filter((state) => {
+							return (state[2] === 'Germany'&&"Switzerland"&&"USA"&&"France"&&"Russia")
+							  && (state[5]) && (state[6]);
+						});
+					})
+					
+					.catch((err) => {
+						if (err) throw err
+					})
+				}
+				
+				function plotState(map, mark) {
+					flightradar().then(function(states) {
+						states.forEach((state) => {
+							const lat = state[6],
+								  lng = state[5],
+								  icao24 = state[0],
+								  head=state[10],
+								  climb=state[11]
+				
+							if (mark[icao24]=== undefined) {
+							mark[icao24] = L.marker([lat, lng], {icon:myIcon})
+		
+												
+								if(climb<= -1000.0){
+									mark[icao24] = L.marker([lat, lng], { icon: myIcon3 })
+															
+									}
+																		
+										
+										if(climb >= 500.0){
+											mark[icao24] = L.marker([lat, lng], { icon: myIcon4 })
+																	
+											}
+		
+		
+		
+							} else {
+					
+							var newLatLng = new L.LatLng(lat, lng);
+								mark[icao24].setLatLng(newLatLng)
+								
+								
+								mark[icao24].setRotationAngle(head)
+		
+		
+								mark[icao24].bindTooltip("Callsign :"+ state[1], {direction: 'right', offset: [-15, 25], permanent: false});
+								
+							}
+								mark[icao24].addTo(map);
+							
+						})
+						setTimeout(() => plotState(map, mark), 3000);
+					});
+				}
+			
+				
+				
+				const mark = {};
+				plotState(map, mark);
+		
+			
+		
+				function toggleOver() {
+					if (map.hasLayer(mark)) {
+					  map.removeLayer(mark);
+					
+					}}
+				  
+				  // Add a click event listener to the map
+				  map.on('click', toggleOver);	
+					
+					
+		
+		var myIcon4 = new L.icon({
+			iconUrl: '/static/img/plane-grey.png',
+			iconSize: [20, 20],
+			iconAnchor: [22, 22],
+			popupAnchor: [0, 0],
+		
+		
+		
+		})
+
+
+fetch("./config")
+
+
+.then((res) => {
+	return res.json();
+})
+.then(function (data) {
+
+const apiKey =data.OPEN_WEATHER_MAP_KEY
+const cities = ["Hamburg","Bern","London","Zurich","Berlin","Frankfurt","Vienna","Nizza","Palma de Mallorca","New York","Dublin","Edinburgh","Helsinki","Kiev",
+"Moscow","Tokyo","Auckland","Sydney","Basel","Leipzig","Salzburg","Dresden","Insbruck","München","Dublin","Madrid","Rome","Bari","Stockholm","Paris","Heraklion","Cairo","Cape-town","Lisbon","Praha","Zermatt"
+,"Amsterdam","Reykjavik","Mannheim","Warzawa","Cologne","Athens","Kiev","Porto","Mahon","Algier","Madrid","Miami","Vancouver"]; 
+
+ 
+
+for (let i = 0; i < cities.length; i++) {
+	const cityName = cities[i];
+// replace with the city of your choice
+const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}&units=metric`;
+
+
+  
+
+
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    
+    const windSpeed = data.wind.speed;
+	const press=data.main.pressure
+	const temp=data.main.temp
+	const name=data.name
+	const name1=data.name
+	const lat= data.coord.lat
+	const lon=data.coord.lon
+	const lat1=data.coord.lat
+	const lon1=data.coord.lon
+	
+	const weather= data.weather[0].description
+    const windDeg = data.wind.deg;
+	const x=data.coord.lat
+	const y= data.coord.lon
+	
+	const Points = [
+	[ lat , lon, windSpeed, windDeg], 
+	
+];
+
+
+Points.forEach(function(p){
+	var icon = L.WindBarb.icon({deg: p[3], speed: p[2],angleConvention:windDeg,colorScale:"red",});
+	var arrow = L.marker([p[0],p[1]], {icon: icon}).addTo(map).bindPopup("<p>Wind Speed: "+p[2]+"m/s"+"</p>"+
+															  "Wind Direction: "+p[3]+"</p>"+"City:"+name+"<br>"+"Temp="+temp+"°C"+"<p>"+press+"hpa"+"<br>"+weather);  
+	setInterval(windSpeed,3000)
+	
+
+					
+															  })})}
+															  
+	const EARTH_RADIUS = 6371; // km
+const TO_RADIANS = Math.PI / 180;
+
+// Average flight speed in km/h
+const AVERAGE_FLIGHT_SPEED = 800;
+
+	
+// Get form and display elements
+const form = document.getElementById('flight-form');
+const flightTime = document.getElementById('flight-time');
+
+// Add event listener to form submit
+form.addEventListener('submit', (event) => {
+	
+  event.preventDefault(); // Prevent form submission
+ 
+
+  // Get origin and destination cities from form
+  const originCity = document.getElementById('origin-city').value;
+  const destinationCity = document.getElementById('destination-city').value;
+ 
+  const departureTimeInput = document.getElementById("departure-time");
+  const departureTime = departureTimeInput.value;
+
+  // Query OpenWeatherMap API to get latitude and longitude of cities
+  Promise.all([
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${originCity}&appid=`+ apiKey),
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${destinationCity}&appid=`+ apiKey)
+  ])
+  .then((responses) => Promise.all(responses.map((response) => response.json())))
+  .then((data) => {
+    const meLatitude = lat.toFixed(2);
+    const meLongitude = lon.toFixed(2);
+	const originLatitude=data[0].coord.lat
+	const originLongitude=data[0].coord.lon
+    const destinationLatitude = data[1].coord.lat;
+    const destinationLongitude = data[1].coord.lon;
+	
+	
+    // Calculate flight distance using haversine formula
+    const dLat = (destinationLatitude - originLatitude) * TO_RADIANS;
+    const dLon = (destinationLongitude - originLongitude) * TO_RADIANS;
+    const a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+              Math.cos(originLatitude * TO_RADIANS) * Math.cos(destinationLatitude * TO_RADIANS) *
+              Math.sin(dLon/2) * Math.sin(dLon/2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    const distance = EARTH_RADIUS * c;
+	const about_Speed=755
+	const speedI =speed*1.652
+    // Calculate flight time
+	document.getElementById('distance').innerHTML = `${distance.toFixed(2)}`;
+// Calculate flight distance using haversine formula
+const dLa = (destinationLatitude - meLatitude) * TO_RADIANS;
+const dLo = (destinationLongitude - meLongitude) * TO_RADIANS;
+const ab = Math.sin(dLa/2) * Math.sin(dLa/2) +
+		  Math.cos(meLatitude * TO_RADIANS) * Math.cos(destinationLatitude * TO_RADIANS) *
+		  Math.sin(dLo/2) * Math.sin(dLo/2);
+const cd = 2 * Math.atan2(Math.sqrt(ab), Math.sqrt(1-ab));
+const distance1 = EARTH_RADIUS * cd;
+
+
+let distanceCovered = distance-distance1
+// km/h
+ 
+
+const flightTimeHours=distance1/(speedI)*60
+const flightTimeHour=distance/755
+
+const departureTimeDisplay = document.getElementById("departure-time-display");
+departureTimeDisplay.innerHTML = `Departure Time: ${departureTime.toLocaleString()}`;
+
+
+
+flightTime.innerHTML = `${(flightTimeHours.toFixed(2))}`
+const depart = new Date(`2023-01-18T${departureTimeStr}:00`);
+depart.setMinutes(depart.getMinutes() + eta2);
+const updatedTimeStr = depart.toLocaleTimeString([], {timeStyle: 'short'});
+document.getElementById("updated-time").innerHTML = `Arrival Time estimated: ${updatedTimeStr}`;
+var eta =  parseFloat(departureTime) 
+var eta2=+ (distance / 755)*60; 
+ var etaText = document.getElementById('eta-text');
+		etaText.innerText = 'Departure-Time: ' + eta.toFixed(2) +"+ Flight-Time approx:"+ eta2.toFixed(2)+"min";
+		var etaTotal= eta+(eta2/100) 
+		var etaToll=document.getElementById("total")
+		etaToll.innerText="ETA Planned:"+ etaTotal.toFixed(2)
+// Use setInterval() method to update the progress every second
+const intervalId = setInterval(updateProgress, 1000);
+
+function updateProgress() {
+			
+  // Calculate the distance covered so far
+  distanceCovered += (speedI/3600)
+  var etas = new Date(Date.now() + (distanceCovered / speedI) * 3600 * 1000); 
+  var etaTex = document.getElementById('eta-tex');
+  etaTex.innerText = 'ETA-Actual: ' + etas.toLocaleString();
+  const percent = (distanceCovered /distance) * 100;
+  // Calculate the percentage of distance covered
+   
+  // Update the progress bar
+  const progressBar = document.getElementById('progress-bar');
+  progressBar.style.width = `${percent}%`;
+  progressBar.innerHTML = `${percent.toFixed(2)}%`;
+ 
+
+  
+  // Check if the journey is complete
+  if (distanceCovered >= distance) {
+ 
+
+    clearInterval(intervalId);
+    alert('You have arrived at your destination!');
+	 	}
+	
+		
+	
+	getSimulatorData()
+	updateMap()
+
+	}}
+  )}
+
+
+  )})
+
+  
+   		        
+	</script>
+
+
+	
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+
+
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js"></script>
+
+
+	
+	<script src="/static/js/custom/getSimData.js?v18"></script>
+
+
+
+	<script>
+		syncRadio();
+
+		getSimulatorData()
+		updateMap()	
+	</script>
+
+
+	<script>
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+		window.addEventListener('resize', () => {
+			let vh = window.innerHeight * 0.01;
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+		});
+	</script>
+
+
+</body>
+
+</html>

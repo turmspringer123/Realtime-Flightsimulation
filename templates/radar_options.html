@@ -1,0 +1,52 @@
+<div class="collapse" id="collapseOptions" data-parent="#myGroup">
+	<div class="card bg-dark text-white" style="margin-top:10px;margin-bottom:12px;">
+		<div class="card-body">
+		
+				<p>Weather by NOAA</p>			
+				<label for="airports">Airport:</label>
+				<input type="text" id="location"  placeholder="ICAO">
+				<button class="btn btn-warning" onclick="Get()">Get Metar</button>
+				
+			
+					</div>
+				  </div>
+</div>
+
+
+<script>
+	 
+
+		function Get(){
+
+			
+		window.location= `http://tgftp.nws.noaa.gov/data/observations/metar/stations/${document.querySelector("#location").value}.TXT` 
+		
+		
+		}
+
+		
+				function Handler(self, e) {
+					e.preventDefault();
+					var href = $(self).attr("href");
+					window.open(href);
+					return false;
+
+					
+				}
+			
+
+	 </script>
+
+	
+
+
+
+
+
+	
+				
+
+				
+			
+				
+		

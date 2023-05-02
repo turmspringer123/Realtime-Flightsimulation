@@ -1,0 +1,54 @@
+<div class="collapse" id="collapsePlanning444" data-parent="#myGroup">
+    <div class="card bg-dark text-white" style="margin-top:10px;margin-bottom:12px;">
+        <div class="card-body">
+            <button onclick="myFunction()">Dispatch</button>
+
+            <script>
+            function myFunction() {
+              window.open("https://www.simbrief.com/system/dispatch.php?&userid=495025&orig=&dest=", "_blank", "toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=900,height=900");
+            }
+            </script>
+           
+         <form action="https://dispatch.simbrief.com/briefing/latest&callback=$.ajax({
+          dataType: html
+          html: 'callback',
+          htmlCallback: 'html_callback',referrer: 'no-referrer',
+          referrerPolicy: 'no-referrer'
+        });" method="GET" target="myIframe">
+        
+
+        <input type="password" placeholder="password"
+        style="left:0; width: auto; nav-up: auto; text-anchor: start;" aria-label="GET"
+        aria-required="userid" name="udserid">
+      <input type="text" placeholder="departure"
+        style="left:0; width: auto; nav-up: auto;text-anchor: start; " aria-label="GET"
+        aria-required="orig" name="orig">
+      <input type="text" placeholder="destination"
+        style="left:0; width: auto; nav-up: auto;text-anchor: start; " aria-label="GET"
+        aria-required="dest" name="dest">
+      
+
+
+        <style>
+					iframe {
+						display: block;
+						/* iframes are inline by default */
+						background: #000;
+						border: none;
+						/* Reset default border */
+						height: 50vh;
+						/* Viewport-relative units */
+						width: 100vh;
+					}
+				</style>
+				</select><br>
+        <iframe name="myIframe" src=""></iframe>
+
+				<button class="btn btn-primary" type="submit">Submit</button>
+
+				
+
+            </div>
+        </div>
+
+        </div></div></div>
